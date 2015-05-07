@@ -1,15 +1,21 @@
+#!/usr/bin/python
+
+#Calculate based on Reverse Polish Notation
 import re
 from decimal import *
 def getPriority(inputDate):
+	#get the priority of the symbol input
 	return (inputDate in '+-')*1+(inputDate in '*/')*2+(inputDate=='^')*3
 def notAdvanced(inputDate,target):
 	return (getPriority(inputDate)<=getPriority(target) or inputDate==')')
 def strToDecimal(inputDate):
+	#convert the str to Decimal number
 	try:
 		return Decimal(inputDate)
 	except:
 		return inputDate
 def infixToPostfix(inputDate):
+	#convert infix to postfix
 	swap=list()
 	returnlist=list()
 	dealedDate=re.findall("(?<![0-9])-?\d+\.?\d*|[^\d]",inputDate)
@@ -36,6 +42,7 @@ def infixToPostfix(inputDate):
 		returnlist.append(swap.pop())
 	return returnlist
 def calculate(postfixFormat):
+	#calculate the postfix
 	add=lambda x,y:x+y
 	sub=lambda x,y:x-y
 	mul=lambda x,y:x*y
@@ -53,6 +60,7 @@ def calculate(postfixFormat):
 	return stack.pop()
 
 if __name__ == '__main__':
+	#test code 
 	postfixFormat=infixToPostfix(input())
 	print(postfixFormat)
 	print(calculate(postfixFormat))
