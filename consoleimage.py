@@ -24,5 +24,5 @@ if __name__ == '__main__':
 				picstr+=(grayLevel[(img.getpixel((x,y))-minp)*255/(maxp-minp)//32])
 		if(y%(img.size[1]//32)==0):
 			picstr+='\n'
-	os.system("clear")			
+	os.system('echo -e "\033[1;1H\033\n"')		
 	print picstr

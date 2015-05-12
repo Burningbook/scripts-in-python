@@ -20,6 +20,7 @@ def run():
 		else ('right' if(button=='d' and direction!='left') else direction)))
 		time.sleep(0.2)	
 if __name__ == "__main__":
+	os.system("clear")
 	fd = sys.stdin.fileno()
 	new = termios.tcgetattr(fd)
 	new[3] = new[3] & ~termios.ICANON
@@ -36,7 +37,7 @@ if __name__ == "__main__":
 			while (tempstr[randx*2] == '*'):
 				randx= 0 if(randx>254) else randx+1
 			tempstr[randx*2]='#'
-		os.system('clear')
+		os.system('echo -e "\033[1;1H\033\n"')
 		Onepic("".join(tempstr))
 		for pos in snakebody:
 			tempstr[pos.x*2+32*pos.y]=' '
